@@ -117,7 +117,7 @@ public class CBoard {
 
                 // 목록 출력
                 case 1:
-                    text();
+                    list();
                     // 내용 == null이면 quest()만 출력 후 다시 처음부터
                     // null이 아니면 등록된 내용의 번호 제목 작성자 작성일 출력
                     quest();
