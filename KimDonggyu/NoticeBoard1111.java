@@ -7,13 +7,60 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 
-public class RunBoard {
+public class NoticeBoard1111 {
     static private int num;// 리스트 넘버링
     static private LinkedList<JSONObject> myList = new LinkedList<>();
     Scanner scan = new Scanner(System.in);
 
+    public void run(){
+        String title = "";
+        String description = "";
+        String writer = "";
 
+        showMainTitle();
+        while (true){
+            showNav();
+            System.out.print("Choose*•.¸*•.¸*•.¸*•.¸*•.¸*•.¸*•.¸");
+            int select = scan.nextInt();
+            scan.nextLine();
+            switch (select){
+                case 1: showEachExplanation(select);
+                    showConTitle();
+                    controlShowList();;
+                    showContinue();
+                    break;
+                case 2: showEachExplanation(select);
+                    System.out.print("제목>>");
+                    title = scan.nextLine();
+                    System.out.print("내용>>");
+                    description = scan.nextLine();
+                    System.out.print("작성자>>");
+                    writer = scan.nextLine();
+                    jsonadd(title,description,writer);
+                    showContinue();
+                    break;
+                case 3: showEachExplanation(select);
+                    showConTitle();
+                    controlShowList();
+                    controlDescription(scan.nextInt());
+                    scan.nextLine();
+                    showContinue();
+                    break;
+                case 4: showEachExplanation(select);
+                    controlShowList();
+                    controlDelete(scan.nextInt());
+                    scan.nextLine();
+                    showContinue();
+                    break;
+                case 0: showEachExplanation(select);
+                    showContinue();
+                    return;
+                default: System.out.println("값은 제대로 넣기!");
+                    break;
+            }
+        }
 
+    }
 
     public void jsonadd(String title,String description,String writer) {
         JSONObject inner = new JSONObject();//Json inner 부분
@@ -36,6 +83,7 @@ public class RunBoard {
     }
 
     public void controlDelete(int num){
+        //객체를 찾아서 지우도록 수정
         try{
             myList.remove(num);
             System.out.println(""+'\t'+'\t'+'\t'+'\t'+"  "+"▂▃▅▇█▓▒░۩۞۩ 게시글을 삭제 하였습니다 ۩۞۩░▒▓█▇▅▃▂");
@@ -88,6 +136,8 @@ public class RunBoard {
         System.out.println(""+'\t'+'\t'+'\t'+'\t'+'\t'+'\t'+'\t'+"\uD81A\uDC7C.\uD81A\uDD23\uD81A\uDD67\uD80C\uDEFC\uD80C\uDF4AWellcome\uD81A\uDC7C.\uD81A\uDD23\uD81A\uDD67\uD80C\uDEFC\uD80C\uDF4A");
     }
     public void showEachExplanation(int i){
+//        String[] explanationArr = new String[5];
+//        explanationArr[0] = "\"\" +\".　　　 ヘ　 ヘ    Bye...Bye..\\n\" +\"　　　/　＼/　＼\\n\" +\"　　／　　　　　ヽ\\n\" +\"　 /　　ㅇ　　 ㅇ　|\\n\" +\"　｜　∪　/￣￣T　|\\n\" + \"　｜∪　 ｜　　|　|\\n\" + \"　 ＼　　｜＿　| ノ\\n\" + \"　 ／　ヽ｜　ヽ|、\\n\" + \"　(　　 |｜　 ||｜\\n\" + \"　|　　 ヽ二二ノ｜\\n\" + \"　|　 L　　　　｣｜\\n\" + \"　ヽ＿ﾉ　　　 (_/\\n\" + \"　　｜　　/　 /\\n\" + \"　　｜　 /　 /\\n\" + \"　　(＿＿)＿_)\\n\")"
         switch (i){
             case 0 :
                 System.out.println("" +".　　　 ヘ　 ヘ    Bye...Bye..\n" +"　　　/　＼/　＼\n" +"　　／　　　　　ヽ\n" +"　 /　　ㅇ　　 ㅇ　|\n" +"　｜　∪　/￣￣T　|\n" + "　｜∪　 ｜　　|　|\n" + "　 ＼　　｜＿　| ノ\n" + "　 ／　ヽ｜　ヽ|、\n" + "　(　　 |｜　 ||｜\n" + "　|　　 ヽ二二ノ｜\n" + "　|　 L　　　　｣｜\n" + "　ヽ＿ﾉ　　　 (_/\n" + "　　｜　　/　 /\n" + "　　｜　 /　 /\n" + "　　(＿＿)＿_)\n");
