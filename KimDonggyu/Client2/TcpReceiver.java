@@ -1,4 +1,4 @@
-package KimDonggyu;
+package KimDonggyu.Client2;
 
 
 import java.io.DataInputStream;
@@ -11,6 +11,7 @@ public class TcpReceiver extends Thread {
 
     public TcpReceiver(Socket socket){
         try{
+            this.socket = socket;
             in = new DataInputStream(socket.getInputStream());
         }catch (Exception e){
             e.printStackTrace();
@@ -18,12 +19,14 @@ public class TcpReceiver extends Thread {
     }
     @Override
     public void run() {
-        while (in != null){
+        while(!socket.isClosed()){
             try{
                 System.out.println(in.readUTF());
             }catch (Exception e){
-                e.printStackTrace();
+                if(socket.isClosed() == true)
+                    System.exit(1);
             }
         }
+
     }
 }

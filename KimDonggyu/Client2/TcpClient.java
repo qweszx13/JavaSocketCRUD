@@ -1,13 +1,15 @@
-package KimDonggyu;
+package KimDonggyu.Client2;
 
+import java.io.IOException;
 import java.net.Socket;
 
 public class TcpClient {
-    public static void main(String[] args) {
-        String serverIP = "192.168.0.8";
+    public static void main(String[] args) throws IOException {
+        String serverIP = "127.0.0.1";
+        Socket socket = null;
 
         try {
-            Socket socket = new Socket(serverIP,7777);
+            socket = new Socket(serverIP,7777);
             System.out.println("서버에 연결된듯요");
 
             TcpSender sender = new TcpSender(socket);
@@ -17,6 +19,7 @@ public class TcpClient {
             receiver.start();
 
         }catch (Exception e){
+            socket.close();
             e.printStackTrace();
         }
     }
